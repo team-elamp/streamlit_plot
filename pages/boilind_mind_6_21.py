@@ -46,7 +46,7 @@ def plot_hr_data(glob_files_path):
         hovermode="x"
     )
 
-    st.plotly_chart(fig)
+    return fig
 
 
 
@@ -65,12 +65,13 @@ option = st.selectbox(
 
 if option == 'all':
     glob_files_path = './boiling_mind_6_21_data/**/**.csv'
+    fig = plot_hr_data(glob_files_path=glob_files_path)
+    st.plotly_chart(fig)
 elif option == 'audience':
     glob_files_path = './boiling_mind_6_21_data/audience/**.csv'
-
+    fig = plot_hr_data(glob_files_path=glob_files_path)
+    st.plotly_chart(fig)
 elif option == 'dancer':
     glob_files_path = './boiling_mind_6_21_data/dancer/**.csv'
-
-
-
-plot_hr_data(glob_files_path)
+    fig = plot_hr_data(glob_files_path=glob_files_path)
+    st.plotly_chart(fig)
