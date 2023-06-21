@@ -4,7 +4,6 @@ import pandas as pd
 import glob
 import plotly.graph_objects as go
 
-
 def plot_hr_data(glob_files_path):
     files = glob.glob(glob_files_path)
     fig = go.Figure()
@@ -48,9 +47,6 @@ def plot_hr_data(glob_files_path):
 
     return fig
 
-
-
-
 st.title('ボーリングマインド 6/21 プロット')
 '''
 目的：ダンサー内で心拍同期が起きているかどうか\n
@@ -59,20 +55,20 @@ st.title('ボーリングマインド 6/21 プロット')
 '''
 st.caption('下のグラフ内の右のファイル名をクリックすると、ファイルごとに表示・非表示が切り替えられます！\nまた、グラフ右上の拡張ボタンを押すと、グラフが大きく表示されます！')
 option = st.selectbox(
-    '表示するカテゴリ',
-    ('all','audience','dancer')
-    )
+'表示するカテゴリ',
+('all','audience','dancer')
+)
 st.write(option)
 
 if option == 'all':
-    files_path = './boiling_mind_6_21_data/**/**.csv'
+    files_path = './boiling_mind_6_21_data/**/*.csv'
     fig = plot_hr_data(glob_files_path=files_path)
     st.plotly_chart(fig)
 elif option == 'audience':
-    files_path = './boiling_mind_6_21_data/audience/**.csv'
+    files_path = './boiling_mind_6_21_data/audience/*.csv'
     fig = plot_hr_data(glob_files_path=files_path)
     st.plotly_chart(fig)
 elif option == 'dancer':
-    files_path = './boiling_mind_6_21_data/dancer/**.csv'
+    files_path = './boiling_mind_6_21_data/dancer/*.csv'
     fig = plot_hr_data(glob_files_path=files_path)
     st.plotly_chart(fig)
