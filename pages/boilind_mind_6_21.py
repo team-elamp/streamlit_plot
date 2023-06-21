@@ -32,6 +32,7 @@ elif option == 'dancer':
     fig = plot_hr_data(glob_files_path=files_path)
     st.plotly_chart(fig)
 '''
+'''
 
 def plot_hr_data(glob_files_path:str):
     files = glob.glob(glob_files_path)
@@ -75,3 +76,4 @@ def plot_hr_data(glob_files_path:str):
     )
 
     return fig
+'''
