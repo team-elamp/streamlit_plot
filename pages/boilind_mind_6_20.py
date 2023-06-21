@@ -49,5 +49,7 @@ def plot_hr_data():
 
     return fig
 
+st.title('ボーリングマインド 6/20 プロット')
+st.write('ボーリングマインドのリハーサル時にダンサーの左腕にpolar verity senseをつけてもらい、パフォーマンスをしていただいた。その時の心拍(HR)をプロットしました。 ')
 fig = plot_hr_data()
 st.plotly_chart(fig)
