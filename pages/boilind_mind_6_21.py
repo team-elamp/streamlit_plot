@@ -58,8 +58,9 @@ option = st.selectbox(
 '表示するカテゴリ',
 ('all','audience','dancer')
 )
-st.write(option)
+st.write(option=='all')
 
+'''
 if option == 'all':
     files_path = './boiling_mind_6_21_data/**/*.CSV'
     fig = plot_hr_data(glob_files_path=files_path)
@@ -72,3 +73,5 @@ elif option == 'dancer':
     files_path = './boiling_mind_6_21_data/dancer/*.CSV'
     fig = plot_hr_data(glob_files_path=files_path)
     st.plotly_chart(fig)
+'''
+
