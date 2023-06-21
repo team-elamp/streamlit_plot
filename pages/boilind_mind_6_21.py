@@ -4,8 +4,7 @@ import pandas as pd
 import glob
 import plotly.graph_objects as go
 
-
-def plot_hr(glob_files_path:str):
+def plot_hr(glob_files_path: str):
     files = glob.glob(glob_files_path)
     fig = go.Figure()
 
@@ -48,7 +47,6 @@ def plot_hr(glob_files_path:str):
 
     return fig
 
-
 st.title('ボーリングマインド 6/21 プロット')
 '''
 目的：ダンサー内で心拍同期が起きているかどうか\n
@@ -60,7 +58,6 @@ option = st.selectbox(
 '表示するカテゴリ',
 ('all','audience','dancer')
 )
-
 
 files_path = ''
 if option == 'all':
@@ -75,4 +72,3 @@ elif option == 'dancer':
     files_path = './boiling_mind_6_21_data/dancer/*.CSV'
     fig = plot_hr(files_path)
     st.plotly_chart(fig)
-

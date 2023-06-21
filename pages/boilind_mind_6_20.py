@@ -59,4 +59,4 @@ st.title('ボーリングマインド 6/20 プロット')
 '''
 st.caption('下のグラフ内の右のファイル名をクリックすると、ファイルごとに表示・非表示が切り替えられます！\nまた、グラフ右上の拡張ボタンを押すと、グラフが大きく表示されます！')
 fig = plot_hr_data()
-st.plotly_chart(fig)
+st.plotly_chart(fig, use_container_width=True)
