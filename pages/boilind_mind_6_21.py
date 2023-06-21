@@ -65,14 +65,14 @@ option = st.selectbox(
 files_path = ''
 if option == 'all':
     files_path = './boiling_mind_6_21_data/**/*.CSV'
-    fig = plot_hr(glob_files_path=files_path)
+    fig = plot_hr(files_path)
     st.plotly_chart(fig)
 elif option == 'audience':
     files_path = './boiling_mind_6_21_data/audience/*.CSV'
-    fig = plot_hr(glob_files_path=files_path)
+    fig = plot_hr(files_path)
     st.plotly_chart(fig)
 elif option == 'dancer':
     files_path = './boiling_mind_6_21_data/dancer/*.CSV'
-    fig = plot_hr(glob_files_path=files_path)
+    fig = plot_hr(files_path)
     st.plotly_chart(fig)
 
