@@ -4,10 +4,9 @@ import pandas as pd
 import glob
 import plotly.graph_objects as go
 
-st.title("HR Data Visualization")
 
 def plot_hr_data():
-    files = glob.glob('./original_data/**.csv')
+    files = glob.glob('./boiling_mind_6_20_data/**.csv')
     fig = go.Figure()
 
     for file in files:
@@ -49,7 +48,15 @@ def plot_hr_data():
 
     return fig
 
+
+
+
 st.title('ボーリングマインド 6/20 プロット')
-st.write('ボーリングマインドのリハーサル時にダンサーの左腕にpolar verity senseをつけてもらい、パフォーマンスをしていただいた。その時の心拍(HR)をプロットしました。 ')
+'''
+目的：ダンサー内で心拍同期が起きているかどうか
+詳細:ボーリングマインドのリハーサル時にダンサーの左腕にpolar verity senseをつけてもらい、パフォーマンスをしていただきました。
+その時の心拍(HR)をプロットしました。 また、心拍同期は心拍の増減のタイミングのことなので、個人ごとに心拍を正規化（最小値を0最大値を1とする）し、プロットしました。
+'''
+st.caption('下のグラフ内の右のファイル名をクリックすると、ファイルごとに表示・非表示が切り替えられます！また、グラフ右上の拡張ボタンを押すと、グラフが大きく表示されます！')
 fig = plot_hr_data()
 st.plotly_chart(fig)
