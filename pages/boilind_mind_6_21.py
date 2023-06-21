@@ -60,8 +60,8 @@ st.title('ボーリングマインド 6/21 プロット')
 st.caption('下のグラフ内の右のファイル名をクリックすると、ファイルごとに表示・非表示が切り替えられます！\nまた、グラフ右上の拡張ボタンを押すと、グラフが大きく表示されます！')
 option = st.selectbox(
     '表示するカテゴリ',
-     ('all','audience','dancer')
-     )
+    ('all','audience','dancer')
+    )
 st.write(option)
 
 if option == 'all':
