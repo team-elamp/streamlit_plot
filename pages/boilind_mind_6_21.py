@@ -46,7 +46,6 @@ def plot_hr_data(glob_files_path):
         hovermode="x"
     )
 
-    fig = plot_hr_data()
     st.plotly_chart(fig)
 
 
