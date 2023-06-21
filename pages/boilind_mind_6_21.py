@@ -63,13 +63,14 @@ option = st.selectbox(
      ('all','audience','dancer')
      )
 
-if option == 'audience':
+if option == 'all':
+    glob_files_path = './boiling_mind_6_21_data/**/**.csv'
+elif option == 'audience':
     glob_files_path = './boiling_mind_6_21_data/audience/**.csv'
 
 elif option == 'dancer':
     glob_files_path = './boiling_mind_6_21_data/dancer/**.csv'
 
-elif option == 'all':
-    glob_files_path = './boiling_mind_6_21_data/**/**.csv'
+
 
 plot_hr_data(glob_files_path)
