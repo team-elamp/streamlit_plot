@@ -44,28 +44,7 @@ def plot_hr_data():
         xaxis_title="Time",
         yaxis_title="Normalized HR",
         legend_title="Files",
-        hovermode="x",
-        updatemenus=[
-            dict(
-                type="dropdown",
-                showactive=True,
-                buttons=[
-                    dict(
-                        label="All",
-                        method="update",
-                        args=[{"visible": [True for _ in files]}]
-                    ),
-                    *[
-                        dict(
-                            label=file,
-                            method="update",
-                            args=[{"visible": [True if f == file else False for f in files]}]
-                        )
-                        for file in files
-                    ]
-                ]
-            )
-        ]
+        hovermode="x"
     )
 
     return fig
