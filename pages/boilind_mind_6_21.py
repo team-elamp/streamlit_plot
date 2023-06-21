@@ -64,12 +64,12 @@ option = st.selectbox(
      )
 
 if option == 'audience':
-    plot_hr_data(glob_files_path='./boiling_mind_6_21_data/audience/**.csv')
+    glob_files_path = './boiling_mind_6_21_data/audience/**.csv'
 
 elif option == 'dancer':
-    plot_hr_data(glob_files_path='./boiling_mind_6_21_data/dancer/**.csv')
+    glob_files_path = './boiling_mind_6_21_data/dancer/**.csv'
 
 elif option == 'all':
-    plot_hr_data(glob_files_path='./boiling_mind_6_21_data/**/**.csv')
+    glob_files_path = './boiling_mind_6_21_data/**/**.csv'
 
-
+plot_hr_data(glob_files_path)
