@@ -62,6 +62,7 @@ option = st.selectbox(
     '表示するカテゴリ',
      ('all','audience','dancer')
      )
+st.write(option)
 
 if option == 'all':
     files_path = './boiling_mind_6_21_data/**/**.csv'
