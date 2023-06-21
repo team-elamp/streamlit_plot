@@ -5,8 +5,8 @@ import glob
 import plotly.graph_objects as go
 
 
-def plot_hr_data():
-    files = glob.glob('./boiling_mind_6_20_data/**.csv')
+def plot_hr_data(glob_files_path):
+    files = glob.glob(glob_files_path)
     fig = go.Figure()
 
     for file in files:
@@ -46,17 +46,31 @@ def plot_hr_data():
         hovermode="x"
     )
 
-    return fig
+    fig = plot_hr_data()
+    st.plotly_chart(fig)
 
 
 
 
-st.title('ボーリングマインド 6/20 プロット')
+st.title('ボーリングマインド 6/21 プロット')
 '''
 目的：ダンサー内で心拍同期が起きているかどうか\n
 詳細:ボーリングマインドのリハーサル時にダンサーの左腕にpolar verity senseをつけてもらい、パフォーマンスをしていただきました。\n
 その時の心拍(HR)をプロットしました。 また、心拍同期は心拍の増減のタイミングが同期しているかがなので、個人ごとに心拍を正規化（最小値を0最大値を1とする）し、プロットしました。\n
 '''
 st.caption('下のグラフ内の右のファイル名をクリックすると、ファイルごとに表示・非表示が切り替えられます！\nまた、グラフ右上の拡張ボタンを押すと、グラフが大きく表示されます！')
-fig = plot_hr_data()
-st.plotly_chart(fig)
+option = st.selectbox(
+    '表示するカテゴリ',
+     ('all','audience','dancer')
+     )
+
+if option == 'audience':
+    plot_hr_data('./boiling_mind_6_21_data/audience/**.csv')
+
+elif option == 'dancer':
+    plot_hr_data('./boiling_mind_6_21_data/dancer/**.csv')
+
+elif option == 'all':
+    plot_hr_data('./boiling_mind_6_21_data/**/**.csv')
+
+
