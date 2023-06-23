@@ -12,6 +12,7 @@ def plot_hr_sync():
     for file in files:
         csv_df = pd.read_csv(file)
         start_time = pd.Timestamp(csv_df['Start time'][0])
+        st.write(start_time)
 
         csv_df = pd.read_csv(file, skiprows=2)
         hr = csv_df['HR (bpm)'].dropna()
