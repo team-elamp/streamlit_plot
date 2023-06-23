@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 
 
 def plot_hr_sync():
-    files = glob.glob('./timestamp_sync_val_data/**.csv')
+    files = glob.glob('./timestamp_sync_val_data/**.CSV')
     fig = go.Figure()
 
     for file in files:
@@ -24,7 +24,7 @@ def plot_hr_sync():
         fig.add_trace(go.Scatter(x=time_range, y=normalize_hr, mode='lines', name=file, hovertemplate='Time: %{x}<br>Normalized HR: %{y}<extra></extra>'))
 
     fig.update_xaxes(
-        dtick="600000",
+        dtick="60000",
         tickformat="%H:%M",
         rangeslider=dict(visible=True),
         rangeselector=dict(
