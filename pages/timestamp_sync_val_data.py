@@ -5,14 +5,13 @@ import glob
 import plotly.graph_objects as go
 
 
-def plot_hr_sync():
-    files = glob.glob('./timestamp_sync_val_data/**.CSV')
+def plot_hr_data():
+    files = glob.glob('./timestamp_sync_val_data/**.csv')
     fig = go.Figure()
 
     for file in files:
         csv_df = pd.read_csv(file)
         start_time = pd.Timestamp(csv_df['Start time'][0])
-        st.write(start_time)
 
         csv_df = pd.read_csv(file, skiprows=2)
         hr = csv_df['HR (bpm)'].dropna()
@@ -52,7 +51,12 @@ def plot_hr_sync():
 
 
 
-st.title('心拍同期')
-
-fig = plot_hr_sync()
+st.title('ボーリングマインド 6/20 プロット')
+'''
+目的：ダンサー内で心拍同期が起きているかどうか\n
+詳細:ボーリングマインドのリハーサル時にダンサーの左腕にpolar verity senseをつけてもらい、パフォーマンスをしていただきました。\n
+その時の心拍(HR)をプロットしました。 また、心拍同期は心拍の増減のタイミングが同期しているかがなので、個人ごとに心拍を正規化（最小値を0最大値を1とする）し、プロットしました。\n
+'''
+st.caption('下のグラフ内の右のファイル名をクリックすると、ファイルごとに表示・非表示が切り替えられます！\nまた、グラフ右上の拡張ボタンを押すと、グラフが大きく表示されます！')
+fig = plot_hr_data()
 st.plotly_chart(fig, use_container_width=True)
