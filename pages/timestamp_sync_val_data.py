@@ -24,7 +24,7 @@ def plot_hr_sync():
         fig.add_trace(go.Scatter(x=time_range, y=normalize_hr, mode='lines', name=file, hovertemplate='Time: %{x}<br>Normalized HR: %{y}<extra></extra>'))
 
     fig.update_xaxes(
-        dtick="60000",
+        dtick="600000",
         tickformat="%H:%M",
         rangeslider=dict(visible=True),
         rangeselector=dict(
