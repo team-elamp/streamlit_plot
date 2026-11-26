@@ -1,0 +1,47 @@
+name: e-lamp Security
+'on':
+  pull_request: {}
+  push:
+    branches:
+    - main
+  workflow_dispatch: {}
+permissions:
+  contents: read
+concurrency:
+  group: security-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  source:
+    name: Source security gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    permissions:
+      contents: read
+    steps:
+    - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      with:
+        persist-credentials: false
+    - name: Scan source without application execution
+      run: python3 .security-ci/check.py source . --report "$RUNNER_TEMP/security-reports/source.json"
+    - name: Upload redacted findings
+      if: always()
+      uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08
+      with:
+        name: source-security-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/security-reports/*.json
+        retention-days: 7
+        if-no-files-found: error
+  gate:
+    name: Security gate
+    if: always()
+    needs:
+    - source
+    runs-on: ubuntu-24.04
+    permissions: {}
+    steps:
+    - env:
+        SOURCE: ${{ needs.source.result }}
+        IMAGES: success
+      run: 'test "$SOURCE" = success
+
+        test "$IMAGES" = success'
